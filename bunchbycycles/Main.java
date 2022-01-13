@@ -15,6 +15,21 @@ public class Main {
   static void testBucketingByNumberOfCycles() {
     System.out.println("Counting batteries by usage cycles...\n");
     CountsByUsage counts = countBatteriesByUsage(new int[] {100, 300, 500, 600, 900, 1000});
+    for(int i=0;i<counts.length;i++)
+    {
+    if(counts[i]<400)
+    {
+      counts.lowCount++;
+    }
+    else if(counts[i]>400 && counts[i]<919)
+    {
+      counts.mediumCount++;
+    }
+      else if(counts[i]>920)
+      {
+        counts.highCount++;
+      }
+    }
     assert(counts.lowCount == 2);
     assert(counts.mediumCount == 3);
     assert(counts.highCount == 1);
@@ -23,5 +38,6 @@ public class Main {
 
   public static void main(String[] args) {
     testBucketingByNumberOfCycles();
+    
   }
 }
